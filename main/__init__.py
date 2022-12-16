@@ -2,6 +2,7 @@ import sys
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
+import matplotlib as plt
 import os
 
 

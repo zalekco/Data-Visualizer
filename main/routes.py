@@ -1,13 +1,12 @@
-import io
-import random
+# import io
+# import random
 from main import app
 from flask import render_template, url_for, request, Response
 import pandas as pd
-from pandas import Series, DataFrame
-import matplotlib.pyplot as py
-import matplotlib as plt
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
+from pandas import Series
+import matplotlib.pyplot as plt
+# from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+# from matplotlib.figure import Figure
 
 #### LOGIC FOR PLOTTING ####
 tickers = [
@@ -36,10 +35,10 @@ HTTP_request = f'https://cloud.iexapis.com/stable/stock/market/batch?symbols={ti
 
 data = pd.read_json(HTTP_request)
 
-print(data['JPM'] ['chart'])
+# print(data['JPM'] ['chart'])
 
 for ticker in tickers:
-    pd.series_dict.update({ticker : pd.DataFrame(data[ticker]['chart'])['close']})
+    Series.to_dict({ticker : pd.DataFrame(data[ticker]['chart'])['close']})
 
 series_list = []
 
@@ -74,7 +73,8 @@ ticks = range(1, len(data.columns)+1)
 labels = list(data.columns)
 plt.xticks(ticks, labels, fontsize=20)
 
-plt.savefig('static/images/data.png')
+ddata = plt.savefig('main/static/images/data.png')
+plt.close(ddata)
 
 
 ### END CHART ###
@@ -88,4 +88,8 @@ def main():
 
 @app.route("/display")
 def plot():
-    return render_template('display.html', name = 'data', url='/static/images/data.png')
+    return render_template('display.html', name = 'data', url='main/static/images/data.png')
+
+# def image(x):
+#     x = datad
+#     return (x)
