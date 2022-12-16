@@ -88,8 +88,8 @@ def main():
 
 @app.route("/display")
 def plot():
-    return render_template('display.html', name = 'data', url='main/static/images/data.png')
+    return render_template('display.html', name = 'data', url='static/images/data.png')
 
 # def image(x):
-#     x = datad
+#     x = datad 
 #     return (x)
